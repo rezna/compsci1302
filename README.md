@@ -1,1 +1,1 @@
-# this repository contains code that has to be written for class
+# this repository contains code that was assigned in class
