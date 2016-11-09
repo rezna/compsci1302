@@ -1,56 +1,69 @@
-package assignment3;
-import java.util.*;
+package assignment4;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class question2 {
 	
+	public static void bubblesort(){
+	ArrayList<Integer> sortarray = new ArrayList<Integer>();
 	
-	public static void removeinRange(){
-		
-	ArrayList<String> st = new ArrayList<String>();
+	for(int i = 0; i < 10; i++){
+		sortarray.add(genRandom());
+		}//end for
 	
-		System.out.println("enter the starting string");
+	System.out.println("arraylist contains: " + sortarray);
 			
-			Scanner StringStart = new Scanner(System.in);
-			String Start1 = StringStart.next();
-			System.out.println(Start1 + " is the starting string");
-			
-			System.out.println("enter the ending string");
-			Scanner StringEnd = new Scanner(System.in);
-			
-			String End1 = StringEnd.next();
-			System.out.println(End1 + " is the ending string");
-		
-		String qw = " ";
-	System.out.println("enter the arraylist items. type 'stop' to end the entry query");
-
-	while(!qw.equals("stop")){
-		Scanner sc = new Scanner(System.in);
-		qw = sc.nextLine();
-		st.add(qw);
-		st.remove("stop");
-			
-	}//end while
+	//put sort algorithm code here
 	
-	for(int i = 0; i < st.size(); i++){
-		if(st.get(i).compareTo(Start1)>0 && st.get(i).compareTo(End1)<0){
-			st.set(i,"removed");
-			i = 0;
-		}//end if inside for
+	int[] swaptemp;
+	swaptemp = new int[2];
+	int q = swaptemp[0];
+	int w = swaptemp[1];
+	
+	//this is bubble sort
+	for(int j = 0; j < Math.pow(sortarray.size(), 1); j++){
 		
+		for(int i = 0; i < ( sortarray.size()-1 ); i++){ 
+			q = sortarray.get(i);
+			w = sortarray.get(i+1);
+			swaptemp[0] = q;
+			swaptemp[1] = w;
+			if(swaptemp[0]<swaptemp[1]){
+				sortarray.set(i, q);
+				sortarray.set(i+1, w);
+			}else if(swaptemp[0]>swaptemp[1]){
+				sortarray.set(i, w);
+				sortarray.set(i+1, q);
+			}//end else if
+		}//end for within for
 	}//end for
-				
-	Arrays.toString(st.toArray());
-	System.out.println("the arraylist contains: " + st);
+	
+	
+	List<String> newList = new ArrayList<String>(sortarray.size());
+	for (Integer myInt : sortarray) { 
+	  newList.add(String.valueOf(myInt)); 
+	}
+	System.out.println("integer arraylist sorted & converted to string. it contains: " + newList);
+	
+	for(int i = 0; i < 10; i++){
 		
-}//end removeinrange
+		newList.set(i, newList.get(i));
+	}//end for
+	System.out.println("string list now contains: " + newList);
+	
+	
+	
+	}
+	
+	public static int genRandom(){
+		  return new Random().nextInt(50);
+		}//end genRandom()
+	
+	
 	public static void main(String[] args){
-		removeinRange();
-	}//end main
-}//end class
-	
-	
-	
-	
-	
+		bubblesort();
+	}
+}
 
